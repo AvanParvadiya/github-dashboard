@@ -1,15 +1,13 @@
-import { Box, Grid, List, ListItem, Typography, Card, CardContent, TableContainer, Table, TableHead, Paper, TableRow, TableCell, TableBody, TablePagination, IconButton, Collapse, TableSortLabel, FormControlLabel, Popper, Dialog, ClickAwayListener } from "@mui/material";
+import { Box, Grid, Typography, Card, CardContent, TableContainer, Table, TableHead, Paper, TableRow, TableCell, TableBody, TablePagination, IconButton, Collapse } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { PullRequest } from "../SVG/svgs";
 import moment from 'moment';
 import useApiRequest from "../helper/useApiRequest";
 import Errors from "./Errors";
-import { ArrowBack, CheckBox } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import FilterListIcon from '@mui/icons-material/FilterList';
-
 
 interface IDataRow {
     row: any
@@ -51,7 +49,7 @@ const AllPRs = () => {
 
     const TableDataRow = ({ row }: IDataRow) => {
         const [open, setOpen] = useState(false);
-        const { data: comments, error, isLoaded } = useApiRequest(
+        const { data: comments } = useApiRequest(
             row._links?.comments?.href
         );
         return <>

@@ -1,4 +1,4 @@
-import { Box, Grid, List, ListItem, Typography, Card, CardContent, TableRow, TableCell, IconButton, Collapse, TableContainer, TableHead, Paper, Table, TableBody, TablePagination } from "@mui/material";
+import { Box, Grid, Typography, Card, CardContent, TableRow, TableCell, IconButton, Collapse, TableContainer, TableHead, Paper, Table, TableBody, TablePagination } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Errors from "./Errors";
 import { ArrowBack } from "@mui/icons-material";
@@ -8,24 +8,7 @@ import { Issue } from "../SVG/svgs";
 import { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Issues from "./Issues";
 
-function createData(events: any, dates: any) {
-    return { events, dates };
-}
-
-const rows = [
-    createData("Technical Scripter", "13 October"),
-    createData("Gate Mock", "5 November"),
-    createData("Bi Wizard", "26 November"),
-    createData("Job-A-Thon14", "21 October"),
-    createData("GFG Hiring", "15 October"),
-    createData("TechnicalScripter", "13 October"),
-    createData("Gate Mock Exam", "5 November"),
-    createData("Bi Wizard School", "26 November"),
-    createData("Job-A-Thon 14", "21 October"),
-    createData("GFG Hiring Challenge", "15 October")
-];
 
 interface IDataRow {
     row: any
@@ -64,7 +47,7 @@ const AllIssues = () => {
     }
     const TableDataRow = ({ row }: IDataRow) => {
         const [open, setOpen] = useState(false);
-        const { data: comments, error, isLoaded } = useApiRequest(
+        const { data: comments } = useApiRequest(
             row?.comments_url
         );
         return <>
