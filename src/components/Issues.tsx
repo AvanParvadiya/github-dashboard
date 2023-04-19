@@ -19,9 +19,14 @@ const Issues = () => {
         <Grid p={3}>
             <Card>
                 <CardContent>
-                    <NavLink to={'/issues'}>
-                        <Issue /> Issues
-                    </NavLink>
+                    <Box display="flex" justifyContent="space-between">
+                        <NavLink to={'/issues'}>
+                            <Issue /> Issues
+                        </NavLink>
+                        <NavLink to={'/issues'}>
+                            View All
+                        </NavLink>
+                    </Box>
                     <Box >
                         <List>
                             {data.slice(0, 5).map((item: any, index: number) => (
@@ -34,7 +39,7 @@ const Issues = () => {
                                             <Box width="100%">
                                                 <Box display="flex" justifyContent="space-between">
                                                     <Typography>
-                                                        {item?.title}
+                                                        Issue #{item?.number}{item?.title}
                                                     </Typography>
                                                     <Typography>
                                                         {item?.user?.login}

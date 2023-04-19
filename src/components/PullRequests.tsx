@@ -22,9 +22,15 @@ const PullRequests = () => {
             <Card >
 
                 <CardContent>
-                    <NavLink to={"/prs"}>
-                        <PullRequest /> Pull Requests
-                    </NavLink>
+                    <Box display="flex" justifyContent="space-between">
+                        <NavLink to={"/prs"}>
+                            <PullRequest /> Pull Requests
+                        </NavLink>
+                        <NavLink to={"/prs"}>
+                            View All
+                        </NavLink>
+
+                    </Box>
                     <List>
                         {data.slice(0, 5).map((item: any, index: number) => (
                             <ListItem key={index}>
@@ -36,7 +42,7 @@ const PullRequests = () => {
                                         <Box width="100%">
                                             <Box display="flex" justifyContent="space-between">
                                                 <Typography>
-                                                    {item?.title}
+                                                    PR:#{item?.number} {item?.title}
                                                 </Typography>
                                                 <Typography>
                                                     {item?.user?.login}
