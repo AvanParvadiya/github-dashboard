@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[Tesing URL](https://taupe-dragon-b08d69.netlify.app/)
+
 ### first install project locally with 
 ```npm install```
 then run
