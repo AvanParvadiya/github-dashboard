@@ -8,6 +8,7 @@ import { Issue } from "../SVG/svgs";
 import { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Issues from "./Issues";
 
 function createData(events: any, dates: any) {
     return { events, dates };
@@ -116,42 +117,44 @@ const AllIssues = () => {
                                 <Typography variant="body1">
                                     Comments
                                 </Typography>
-                                <TableContainer component={Paper}>
-                                    <Table sx={{ minWidth: 650 }}
-                                        aria-label="simple table">
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell>Body</TableCell>
-                                                <TableCell>created on</TableCell>
-                                                <TableCell>updated by</TableCell>
-                                                <TableCell align="right">
-                                                    created by
-                                                </TableCell>
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody sx={{
-                                            "&:last-child td, &:last-child th": { border: 0 }
-                                        }}>
-                                            {comments?.slice((comments.length - 5), comments.length).reverse().map((comment: any, index: number) => {
-                                                return <TableRow key={index}>
-                                                    <TableCell component="th" scope="row">
-                                                        {comment.body}
+                                {comments.length === 0 ? <Typography>No commnets</Typography> :
+                                    <TableContainer component={Paper}>
+                                        <Table sx={{ minWidth: 650 }}
+                                            aria-label="simple table">
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell>Body</TableCell>
+                                                    <TableCell>created on</TableCell>
+                                                    <TableCell>updated by</TableCell>
+                                                    <TableCell align="right">
+                                                        created by
                                                     </TableCell>
-                                                    <TableCell>
-                                                        By {comment.user.login}
-                                                    </TableCell>
-                                                    <TableCell>
-                                                        {moment(comment.created_at).fromNow()}
-                                                    </TableCell>
-                                                    <TableCell>
-                                                        {moment(comment.updated_at).fromNow()}
-                                                    </TableCell>
-
                                                 </TableRow>
-                                            })}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
+                                            </TableHead>
+                                            <TableBody sx={{
+                                                "&:last-child td, &:last-child th": { border: 0 }
+                                            }}>
+                                                {comments?.slice((comments.length - 5), comments.length).reverse().map((comment: any, index: number) => {
+                                                    return <TableRow key={index}>
+                                                        <TableCell component="th" scope="row">
+                                                            {comment.body}
+                                                        </TableCell>
+                                                        <TableCell>
+                                                            By {comment.user.login}
+                                                        </TableCell>
+                                                        <TableCell>
+                                                            {moment(comment.created_at).fromNow()}
+                                                        </TableCell>
+                                                        <TableCell>
+                                                            {moment(comment.updated_at).fromNow()}
+                                                        </TableCell>
+
+                                                    </TableRow>
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                }
 
                             </Card>
                         </Box>
@@ -171,10 +174,9 @@ const AllIssues = () => {
                 </Box>
                 {error !== null ? <Errors error={error} /> : null}
                 {!isLoaded ? <Box>Loading...</Box> : <Box mt={2}>
-                    <Typography>
-                        Issues
+                    <Typography textAlign="center" variant="h5">
+                        <Issue /> Issues
                     </Typography>
-
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }}
                             aria-label="simple table">

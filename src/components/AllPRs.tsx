@@ -25,7 +25,7 @@ const AllPRs = () => {
     useEffect(() => {
         if (data !== null) {
             const allData = data?.map((gitData: any) => {
-                const {number,body, state, title, url, _links, user, created_at } = gitData
+                const { number, body, state, title, url, _links, user, created_at } = gitData
                 return {
                     number,
                     body,
@@ -104,8 +104,7 @@ const AllPRs = () => {
                                 <Typography variant="body1">
                                     Comments
                                 </Typography>
-
-                                <TableContainer component={Paper}>
+                                {comments?.length === 0 ? <Typography>No comments</Typography> : <TableContainer component={Paper}>
                                     <Table sx={{ minWidth: 650 }}
                                         aria-label="simple table">
                                         <TableHead>
@@ -140,7 +139,8 @@ const AllPRs = () => {
                                             })}
                                         </TableBody>
                                     </Table>
-                                </TableContainer>
+                                </TableContainer>}
+
 
                             </Card>
                         </Box>
